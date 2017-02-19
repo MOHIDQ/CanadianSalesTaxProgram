@@ -51,7 +51,8 @@
             android:textColorHint="#ffd500"
             android:textColor="#ffd500"
             android:layout_above="@+id/TaxPEdit"
-            android:layout_toEndOf="@+id/button9" />
+            android:layout_alignStart="@+id/TaxPEdit"
+            android:maxLength="6"/>
 
         <EditText
             android:layout_width="110dp"
@@ -65,7 +66,8 @@
             android:textColor="#ffd500"
             android:textSize="20dp"
             android:layout_below="@+id/textView"
-            android:layout_alignStart="@+id/CostEdit" />
+            android:layout_alignStart="@+id/TaxGEdit"
+            android:maxLength="9" />
 
         <EditText
             android:layout_width="110dp"
@@ -79,7 +81,8 @@
             android:textColor="#ffd500"
             android:textSize="20dp"
             android:layout_below="@+id/TaxPEdit"
-            android:layout_alignStart="@+id/buttonClear" />
+            android:layout_alignParentEnd="true"
+            android:maxLength="9" />
 
         <EditText
             android:layout_width="110dp"
@@ -93,7 +96,8 @@
             android:textColor="#ffd500"
             android:textSize="20dp"
             android:layout_below="@+id/TaxGEdit"
-            android:layout_alignStart="@+id/decimal" />
+            android:layout_toEndOf="@+id/TotalEdit"
+            android:maxLength="9" />
 
         <Button
             android:layout_width="wrap_content"
@@ -183,7 +187,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/button9"
-            android:onClick="onClickClear" />
+            android:onClick="onClickClear"
+            android:layout_toEndOf="@+id/button3" />
 
         <Button
             android:layout_width="wrap_content"
@@ -266,10 +271,11 @@
             android:layout_below="@+id/viewAll"
             android:layout_alignParentEnd="true"
             android:onClick="onClickDeci"
-            android:textSize="24dp"/>
+            android:textSize="24dp"
+            android:layout_toEndOf="@+id/calc" />
 
         <EditText
-            android:layout_width="110dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
@@ -277,7 +283,16 @@
             android:textColor="#ffd500"
             android:textSize="20dp"
             android:layout_below="@+id/TaxHEdit"
-            android:layout_toStartOf="@+id/TaxGEdit" />
+            android:layout_toStartOf="@+id/TaxGEdit"
+            android:maxLength="11" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emailImage"
+            android:src="@drawable/image1"
+            android:layout_above="@+id/CostEdit"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </ScrollView>

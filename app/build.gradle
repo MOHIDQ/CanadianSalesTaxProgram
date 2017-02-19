@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.example.mohid.canadiansalestaxprogram"
+        applicationId "com.taxprogram.mohid.canadiansalestaxprogram"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1

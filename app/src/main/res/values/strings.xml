@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CanadianSalesTaxProgram</string>
-    <string-array name = "Provinces">
+    <string-array name="Provinces">
         <item>Ontario</item>
         <item>Quebec</item>
         <item>Alberta</item>

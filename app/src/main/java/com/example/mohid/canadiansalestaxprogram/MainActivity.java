@@ -1,5 +1,6 @@
 package com.example.mohid.canadiansalestaxprogram;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     dataBaseHelper mydb;
+    ImageView emailImage;
     EditText costEdit, TaxPEdit, TaxGEdit, TaxHEdit, TotalEdit;
     Button calc, viewAll, calculate;
     TextView cost, hstText, gstText, pstText;
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mydb = new dataBaseHelper(this);
+        emailImage = (ImageView)findViewById(R.id.emailImage);
+        emailImage.setImageResource(R.drawable.image1);
         costEdit = (EditText)findViewById(R.id.CostEdit);
         TaxPEdit = (EditText)findViewById(R.id.TaxPEdit);
         TaxGEdit = (EditText)findViewById(R.id.TaxGEdit);
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         addData();
         viewData();
+        emailAct();
     }
 
     public void addData() {
@@ -113,6 +119,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         builder.setMessage(Message);
         builder.show();
     }
+    public void emailAct() {
+        emailImage.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent emailIntent = new Intent(MainActivity.this, EmailActivity.class);
+                        if (costEdit.getText().toString().equals("")) {
+                            emailIntent.putExtra("cost", "0.00");
+                        }
+                        else {
+                            emailIntent.putExtra("cost", costEdit.getText().toString());
+                        }
+                        emailIntent.putExtra("PST", TaxPEdit.getText().toString());
+                        emailIntent.putExtra("GST", TaxGEdit.getText().toString());
+                        emailIntent.putExtra("HST", TaxHEdit.getText().toString());
+                        emailIntent.putExtra("total", TotalEdit.getText().toString());
+                        startActivity(emailIntent);
+                    }
+                }
+        );
+    }
 
 
     @Override
@@ -121,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Toast.makeText(this, "You Selected: " + Text, Toast.LENGTH_SHORT).show();
         TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
         TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
+        costEdit.setText("");
         switch(position) {
             case 0:
                 hstText.setText("HST(13%)");
