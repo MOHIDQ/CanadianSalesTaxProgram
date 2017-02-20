@@ -64,7 +64,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         viewData();
         emailAct();
     }
-
+    public boolean validation() {
+        int countDot = 0;
+        for (int i =0; i < costEdit.getText().toString().length(); i++) {
+            if (costEdit.getText().toString().charAt(i) == '.') {
+                countDot ++;
+            }
+        }
+        if (countDot >= 2) {
+            return true;
+        }
+        return false;
+    }
     public void addData() {
         calc.setOnClickListener(
                 new View.OnClickListener() {
@@ -160,13 +171,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                 TaxGEdit.setText("0.00"); TaxPEdit.setText("0.00");
                                 String x = costEdit.getText().toString();
-                                double y = Double.parseDouble(x);
-                                double g = Math.round((y * hst)*100.0)/100.0;
-                                double t = Math.round((y + g)*100.0)/100.0;
-                                String h = Double.toString(g); String tt = Double.toString(t);
+                                if (!validation()) {
+                                    double y = Double.parseDouble(x);
+                                    double g = Math.round((y * hst) * 100.0) / 100.0;
+                                    double t = Math.round((y + g) * 100.0) / 100.0;
+                                    String h = Double.toString(g);
+                                    String tt = Double.toString(t);
 
-                                TotalEdit.setText("$" + tt);
-                                TaxHEdit.setText(h); }
+                                    TotalEdit.setText("$" + tt);
+                                    TaxHEdit.setText(h);
+                                }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                }
+                                }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
                                 }
@@ -187,16 +205,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double p = Math.round((y * pst)*100.0)/100.0;
-                                    String pp = Double.toString(p);
-                                    double t = Math.round((p + g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
-                                    TaxPEdit.setText(pp);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * gst) * 100.0) / 100.0;
+                                        double p = Math.round((y * pst) * 100.0) / 100.0;
+                                        String pp = Double.toString(p);
+                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxGEdit.setText(h);
+                                        TaxPEdit.setText(pp);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -219,13 +242,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                     TaxHEdit.setText("0.00");
                                     TaxPEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * gst) * 100.0) / 100.0;
+                                        double t = Math.round((g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxGEdit.setText(h);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -247,16 +275,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double p = Math.round((y * pst)*100.0)/100.0;
-                                    String pp = Double.toString(p);
-                                    double t = Math.round((p + g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
-                                    TaxPEdit.setText(pp);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * gst) * 100.0) / 100.0;
+                                        double p = Math.round((y * pst) * 100.0) / 100.0;
+                                        String pp = Double.toString(p);
+                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxGEdit.setText(h);
+                                        TaxPEdit.setText(pp);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -278,16 +311,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double p = Math.round((y * pst)*100.0)/100.0;
-                                    String pp = Double.toString(p);
-                                    double t = Math.round((p + g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
-                                    TaxPEdit.setText(pp);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * gst) * 100.0) / 100.0;
+                                        double p = Math.round((y * pst) * 100.0) / 100.0;
+                                        String pp = Double.toString(p);
+                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxGEdit.setText(h);
+                                        TaxPEdit.setText(pp);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -309,16 +347,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double p = Math.round((y * pst)*100.0)/100.0;
-                                    String pp = Double.toString(p);
-                                    double t = Math.round((p + g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
-                                    TaxPEdit.setText(pp);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * gst) * 100.0) / 100.0;
+                                        double p = Math.round((y * pst) * 100.0) / 100.0;
+                                        String pp = Double.toString(p);
+                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxGEdit.setText(h);
+                                        TaxPEdit.setText(pp);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -340,13 +383,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * hst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxHEdit.setText(h);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * hst) * 100.0) / 100.0;
+                                        double t = Math.round((g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxHEdit.setText(h);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -368,13 +416,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * hst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxHEdit.setText(h);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * hst) * 100.0) / 100.0;
+                                        double t = Math.round((g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxHEdit.setText(h);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -396,13 +449,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * hst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxHEdit.setText(h);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * hst) * 100.0) / 100.0;
+                                        double t = Math.round((g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxHEdit.setText(h);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -424,13 +482,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * hst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxHEdit.setText(h);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * hst) * 100.0) / 100.0;
+                                        double t = Math.round((g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxHEdit.setText(h);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -452,13 +515,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * gst) * 100.0) / 100.0;
+                                        double t = Math.round((g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxGEdit.setText(h);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -480,13 +548,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (!costEdit.getText().toString().equals("")) {
                                     TaxHEdit.setText("0.00");
                                     String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
+                                    if (!validation()) {
+                                        double y = Double.parseDouble(x);
+                                        double g = Math.round((y * gst) * 100.0) / 100.0;
+                                        double t = Math.round((g + y) * 100.0) / 100.0;
+                                        String h = Double.toString(g);
+                                        String tt = Double.toString(t);
+                                        TotalEdit.setText("$" + tt);
+                                        TaxGEdit.setText(h);
+                                    }
+                                    else if (validation()) {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
@@ -501,27 +574,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 gstText.setText("GST(5%)");
                 TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
                 TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * gst)*100.0)/100.0;
-                                    double t = Math.round((g + y)*100.0)/100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-                                    TotalEdit.setText("$" + tt);
-                                    TaxGEdit.setText(h);
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+
+                    calculate.setOnClickListener(
+                            new Button.OnClickListener() {
+                                public void onClick(View v) {
+                                    gst = 0.05;
+                                    if (!costEdit.getText().toString().equals("")) {
+                                        TaxHEdit.setText("0.00");
+                                        String x = costEdit.getText().toString();
+                                        if (!validation()) {
+                                            double y = Double.parseDouble(x);
+                                            double g = Math.round((y * gst) * 100.0) / 100.0;
+                                            double t = Math.round((g + y) * 100.0) / 100.0;
+                                            String h = Double.toString(g);
+                                            String tt = Double.toString(t);
+                                            TotalEdit.setText("$" + tt);
+                                            TaxGEdit.setText(h);
+                                        }
+                                        else if (validation()) {
+                                            Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                        else {
+                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
-                        }
-                );
+                    );
             break;
         }
     }
