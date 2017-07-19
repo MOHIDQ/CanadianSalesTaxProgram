@@ -64,9 +64,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         viewData();
         emailAct();
     }
+    //method valiadiation to determine if valid/legal value has been entered
     public boolean validation() {
         int countDot = 0;
         for (int i =0; i < costEdit.getText().toString().length(); i++) {
+            if (costEdit.getText().toString().equals(".")) {
+                return true;
+            }
             if (costEdit.getText().toString().charAt(i) == '.') {
                 countDot ++;
             }
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         return false;
     }
+    //method addData saves data of calculation
     public void addData() {
         calc.setOnClickListener(
                 new View.OnClickListener() {
