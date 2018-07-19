@@ -164,455 +164,104 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
         TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
         costEdit.setText("");
+
         switch(position) {
-            case 0:
-                hstText.setText("HST(13%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(0%)");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                hst = 0.13;
-                                if (!costEdit.getText().toString().equals("")) {
-                                TaxGEdit.setText("0.00"); TaxPEdit.setText("0.00");
-                                String x = costEdit.getText().toString();
-                                if (!validation()) {
-                                    double y = Double.parseDouble(x);
-                                    double g = Math.round((y * hst) * 100.0) / 100.0;
-                                    double t = Math.round((y + g) * 100.0) / 100.0;
-                                    String h = Double.toString(g);
-                                    String tt = Double.toString(t);
-
-                                    TotalEdit.setText("$" + tt);
-                                    TaxHEdit.setText(h);
-                                }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 1:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(9.975%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05; pst = 0.09975;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * gst) * 100.0) / 100.0;
-                                        double p = Math.round((y * pst) * 100.0) / 100.0;
-                                        String pp = Double.toString(p);
-                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxGEdit.setText(h);
-                                        TaxPEdit.setText(pp);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 2:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    TaxPEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * gst) * 100.0) / 100.0;
-                                        double t = Math.round((g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxGEdit.setText(h);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 3:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(8%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05; pst = 0.08;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * gst) * 100.0) / 100.0;
-                                        double p = Math.round((y * pst) * 100.0) / 100.0;
-                                        String pp = Double.toString(p);
-                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxGEdit.setText(h);
-                                        TaxPEdit.setText(pp);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 4:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(7%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05; pst = 0.07;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * gst) * 100.0) / 100.0;
-                                        double p = Math.round((y * pst) * 100.0) / 100.0;
-                                        String pp = Double.toString(p);
-                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxGEdit.setText(h);
-                                        TaxPEdit.setText(pp);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 5:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(5%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05; pst = 0.05;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * gst) * 100.0) / 100.0;
-                                        double p = Math.round((y * pst) * 100.0) / 100.0;
-                                        String pp = Double.toString(p);
-                                        double t = Math.round((p + g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxGEdit.setText(h);
-                                        TaxPEdit.setText(pp);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 6:
-                hstText.setText("HST(15%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(0%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                hst = 0.15;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * hst) * 100.0) / 100.0;
-                                        double t = Math.round((g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxHEdit.setText(h);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 7:
-                hstText.setText("HST(15%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(0%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                hst = 0.15;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * hst) * 100.0) / 100.0;
-                                        double t = Math.round((g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxHEdit.setText(h);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 8:
-                hstText.setText("HST(15%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(0%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                hst = 0.15;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * hst) * 100.0) / 100.0;
-                                        double t = Math.round((g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxHEdit.setText(h);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 9:
-                hstText.setText("HST(14%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(0%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                hst = 0.14;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * hst) * 100.0) / 100.0;
-                                        double t = Math.round((g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxHEdit.setText(h);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 10:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * gst) * 100.0) / 100.0;
-                                        double t = Math.round((g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxGEdit.setText(h);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 11:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-                calculate.setOnClickListener(
-                        new Button.OnClickListener() {
-                            public void onClick(View v) {
-                                gst = 0.05;
-                                if (!costEdit.getText().toString().equals("")) {
-                                    TaxHEdit.setText("0.00");
-                                    String x = costEdit.getText().toString();
-                                    if (!validation()) {
-                                        double y = Double.parseDouble(x);
-                                        double g = Math.round((y * gst) * 100.0) / 100.0;
-                                        double t = Math.round((g + y) * 100.0) / 100.0;
-                                        String h = Double.toString(g);
-                                        String tt = Double.toString(t);
-                                        TotalEdit.setText("$" + tt);
-                                        TaxGEdit.setText(h);
-                                    }
-                                    else if (validation()) {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                );
-            break;
-            case 12:
-                hstText.setText("HST(0%)");
-                pstText.setText("PST(0%)");
-                gstText.setText("GST(5%)");
-                TaxPEdit.setText("0.00"); TaxGEdit.setText("0.00");
-                TaxHEdit.setText("0.00"); TotalEdit.setText("0.00");
-
-                    calculate.setOnClickListener(
-                            new Button.OnClickListener() {
-                                public void onClick(View v) {
-                                    gst = 0.05;
-                                    if (!costEdit.getText().toString().equals("")) {
-                                        TaxHEdit.setText("0.00");
-                                        String x = costEdit.getText().toString();
-                                        if (!validation()) {
-                                            double y = Double.parseDouble(x);
-                                            double g = Math.round((y * gst) * 100.0) / 100.0;
-                                            double t = Math.round((g + y) * 100.0) / 100.0;
-                                            String h = Double.toString(g);
-                                            String tt = Double.toString(t);
-                                            TotalEdit.setText("$" + tt);
-                                            TaxGEdit.setText(h);
-                                        }
-                                        else if (validation()) {
-                                            Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                        else {
-                                        Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                    );
-            break;
+            case 0://option for alberta
+                taxCalc(0.05,0,0);
+                break;
+            case 1: //option for british columbia
+                taxCalc(0.05, 0.07, 0);
+                break;
+            case 2: //option for manitoba
+                taxCalc(0.08, 0.05, 0);
+                break;
+            case 3: //option for new brunswick
+                taxCalc(0, 0, 0.15);
+                break;
+            case 4: //option for newfoundland and labrador
+                taxCalc(0,0,0.15);
+                break;
+            case 5: //option for northwest territories
+                taxCalc(0.05, 0, 0);
+                break;
+            case 6://option for nova scotia
+                taxCalc(0,0,0.15);
+                break;
+            case 7: //option for nunavut
+                taxCalc(0.05, 0, 0);
+                break;
+            case 8: //option for ontario
+                taxCalc(0,0,0.13);
+                break;
+            case 9: //option for PEI
+                taxCalc(0,0,0.15);
+                break;
+            case 10: //option for quebec
+                taxCalc(0.05, 0.09975, 0);
+                break;
+            case 11: //option ofr saskatchewan
+                taxCalc(0.05, 0.06, 0);
+                break;
+            case 12: //option for yukon
+                taxCalc(0.05, 0, 0);
+                break;
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    //method to calculate the taxes and update screen
+    public void taxCalc(double gt, double pt, double ht) {
+        hstText.setText("HST(" + (ht * 100.0) + "%)");
+        pstText.setText("PST(" + (pt * 1000.0 / 10.0) + "%)");
+        gstText.setText("GST(" + (gt * 100.0) + "%)");
+        gst = gt;
+        pst = pt;
+        hst = ht;
+        calculate.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        if (!costEdit.getText().toString().equals("")) {
+                            //TaxHEdit.setText("0.00"); TaxPEdit.setText("0.00");
+                            String x = costEdit.getText().toString();
+                            if (!validation()) {
+                                double y = Double.parseDouble(x);
+                                double g = Math.round((y * gst) * 100.0) / 100.0;
+                                double t = Math.round((y + g) * 100.0) / 100.0;
+                                String h = Double.toString(g);
+
+                                double y2 = Double.parseDouble(x);
+                                double g2 = Math.round((y2 * pst) * 100.0) / 100.0;
+                                double t2 = Math.round((y2 + g2) * 100.0) / 100.0;
+                                String h2 = Double.toString(g2);
+
+                                double y3 = Double.parseDouble(x);
+                                double g3 = Math.round((y3 * hst) * 100.0) / 100.0;
+                                double t3 = Math.round((y3 + g3) * 100.0) / 100.0;
+                                String h3 = Double.toString(g3);
+
+                                double total = (g + g2 + g3 + y) * 100.0 / 100.0;
+
+
+                                TotalEdit.setText("$" + total);
+                                TaxGEdit.setText(h);
+                                TaxPEdit.setText(h2);
+                                TaxHEdit.setText(h3);
+
+                            }
+                            else if (validation()) {
+                                Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Enter A Valid Value", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
     }
 
     public void onClickOne(View v) {

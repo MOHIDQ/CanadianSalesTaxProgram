@@ -1,18 +1,18 @@
 <resources>
     <string name="app_name">CanadianSalesTaxProgram</string>
     <string-array name="Provinces">
-        <item>Ontario</item>
-        <item>Quebec</item>
         <item>Alberta</item>
-        <item>Manitoba</item>
         <item>British Columbia</item>
-        <item>Saskatchewan</item>
+        <item>Manitoba</item>
         <item>New Brunswick</item>
-        <item>New Found Land</item>
-        <item>Nova Scotia</item>
-        <item>Prince Edward Island</item>
-        <item>Nunavut</item>
+        <item>Newfoundland and Labrador</item>
         <item>Northwest Territories</item>
+        <item>Nova Scotia</item>
+        <item>Nunavut</item>
+        <item>Ontario</item>
+        <item>Prince Edward Island</item>
+        <item>Quebec</item>
+        <item>Saskatchewan</item>
         <item>Yukon Territories</item>
     </string-array>
 </resources>
